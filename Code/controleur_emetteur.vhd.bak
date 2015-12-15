@@ -1,0 +1,68 @@
+library IEEE;
+use ieee.std_logic_1164.all;
+
+ENTITY controleur_emetteur IS
+
+PORT();
+
+END ENTITY;
+
+ARCHITECTURE basic OF controleur_emetteur IS
+
+TYPE state_type IS (A, B, C, D, E);
+SIGNAL presentState, nextState: state_type;
+
+BEGIN
+	PROCESS(presentState)
+	BEGIN
+		CASE presentState IS
+			WHEN IDLE 	=>		IF RDTV = '0' THEN
+										nextState <= IDLE;
+									ELSE 
+										nextState <= DETECTED;
+									END IF;
+									
+			WHEN DETECTED =>	nextState <= READY;	
+			WHEN READY   =>	 
+			WHEN START	=> 	IF compte8 ='1' THEN
+										nextState => DATA;
+									ELSE
+										nextState => START;
+									END IF;
+			
+			WHEN DATA	=>		IF	byte_transmi =>'1' THEN
+										nextState <= STOP;
+									ELSE	
+										nextState <= DATA;
+			
+			WHEN STOP	=>		IF compte8 ='1' THEN
+										nextState <= IDLE;
+									ELSE	
+										nextState <= STOP;
+									END IF;
+										
+		END CASE;
+	END PROCESS;
+	
+	PROCESS (i_clk, i_resetb)
+	BEGIN
+		IF (i_resetb = ’0’) THEN
+			presentState <= state_type’LEFT -- or A
+		ELSIF (i_clk’EVENT AND i_clk = ’1’) THEN
+			presentState <= nextState;
+		END IF;
+	END PROCESS;
+
+	PROCESS (presentState)
+		BEGIN
+			CASE presentState is 	
+				when DETECT	=> 	load_RTD = '1'; set_RTDV='0';
+				when READY  =>		load_RDTD = '1'; load_RTD = '0'; set_RTDV = '1'; 
+				when START 	=>		TxD <= '0'; load_RDTD = '0';
+				when DATA 	=>  	TxD <= o_RDTD; shift_RDTD <= '1';
+				when STOP 	=>  	TxD <='1';
+				END CASE;
+		END PROCESS;
+END ARCHITECTURE;
+	
+				

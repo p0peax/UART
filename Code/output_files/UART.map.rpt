@@ -1,0 +1,1031 @@
+Analysis & Synthesis report for UART
+Fri Dec 04 23:15:49 2015
+Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |ControleurUART|UART:UART1|Recepteur:recepteur1|RecepteurControl:ControleurRecepteur|presentState
+  9. State Machine - |ControleurUART|UART:UART1|Emetteur:emetteur1|EmetteurControl:control_emetteur|presentState
+ 10. State Machine - |ControleurUART|lab3:LAB3ENT|controleur:CONT|presentState
+ 11. Registers Removed During Synthesis
+ 12. General Register Statistics
+ 13. Inverted Register Statistics
+ 14. Port Connectivity Checks: "UART:UART1|VitesseDeBaud:vitesseDeBaud1|clk_div256:div8"
+ 15. Port Connectivity Checks: "UART:UART1|Recepteur:recepteur1|eightBitShiftRegister:RDRD|enARdFF_2:bit0"
+ 16. Port Connectivity Checks: "UART:UART1|Recepteur:recepteur1|eightBitShiftRegister:RDRD|enARdFF_2:bit1"
+ 17. Port Connectivity Checks: "UART:UART1|Recepteur:recepteur1|eightBitShiftRegister:RDRD|enARdFF_2:bit2"
+ 18. Port Connectivity Checks: "UART:UART1|Recepteur:recepteur1|eightBitShiftRegister:RDRD|enARdFF_2:bit3"
+ 19. Port Connectivity Checks: "UART:UART1|Recepteur:recepteur1|eightBitShiftRegister:RDRD|enARdFF_2:bit4"
+ 20. Port Connectivity Checks: "UART:UART1|Recepteur:recepteur1|eightBitShiftRegister:RDRD|enARdFF_2:bit5"
+ 21. Port Connectivity Checks: "UART:UART1|Recepteur:recepteur1|eightBitShiftRegister:RDRD|enARdFF_2:bit6"
+ 22. Port Connectivity Checks: "UART:UART1|Recepteur:recepteur1|eightBitShiftRegister:RDRD|enARdFF_2:bit7"
+ 23. Port Connectivity Checks: "UART:UART1|Emetteur:emetteur1|eightBitShiftRegister_emetteur:RDTD|enARdFF_2R1:bit0"
+ 24. Port Connectivity Checks: "UART:UART1|Emetteur:emetteur1|eightBitShiftRegister_emetteur:RDTD|enARdFF_2:bit1"
+ 25. Port Connectivity Checks: "UART:UART1|Emetteur:emetteur1|eightBitShiftRegister_emetteur:RDTD|enARdFF_2:bit2"
+ 26. Port Connectivity Checks: "UART:UART1|Emetteur:emetteur1|eightBitShiftRegister_emetteur:RDTD|enARdFF_2:bit3"
+ 27. Port Connectivity Checks: "UART:UART1|Emetteur:emetteur1|eightBitShiftRegister_emetteur:RDTD|enARdFF_2:bit4"
+ 28. Port Connectivity Checks: "UART:UART1|Emetteur:emetteur1|eightBitShiftRegister_emetteur:RDTD|enARdFF_2:bit5"
+ 29. Port Connectivity Checks: "UART:UART1|Emetteur:emetteur1|eightBitShiftRegister_emetteur:RDTD|enARdFF_2:bit6"
+ 30. Port Connectivity Checks: "UART:UART1|Emetteur:emetteur1|eightBitShiftRegister_emetteur:RDTD|enARdFF_2R1:bit7"
+ 31. Port Connectivity Checks: "UART:UART1|Emetteur:emetteur1|eightBitShiftRegister_emetteur:RDTD"
+ 32. Port Connectivity Checks: "UART:UART1|Emetteur:emetteur1|eightBitRegister:RTD|enARdFF_2:bit0"
+ 33. Port Connectivity Checks: "UART:UART1|Emetteur:emetteur1|eightBitRegister:RTD|enARdFF_2:bit1"
+ 34. Port Connectivity Checks: "UART:UART1|Emetteur:emetteur1|eightBitRegister:RTD|enARdFF_2:bit2"
+ 35. Port Connectivity Checks: "UART:UART1|Emetteur:emetteur1|eightBitRegister:RTD|enARdFF_2:bit3"
+ 36. Port Connectivity Checks: "UART:UART1|Emetteur:emetteur1|eightBitRegister:RTD|enARdFF_2:bit4"
+ 37. Port Connectivity Checks: "UART:UART1|Emetteur:emetteur1|eightBitRegister:RTD|enARdFF_2:bit5"
+ 38. Port Connectivity Checks: "UART:UART1|Emetteur:emetteur1|eightBitRegister:RTD|enARdFF_2:bit6"
+ 39. Port Connectivity Checks: "UART:UART1|Emetteur:emetteur1|eightBitRegister:RTD|enARdFF_2:bit7"
+ 40. Port Connectivity Checks: "UART:UART1|enARdFF_2:RRDP"
+ 41. Port Connectivity Checks: "UART:UART1|enARdFF_2:RTDV"
+ 42. Port Connectivity Checks: "UART:UART1"
+ 43. Port Connectivity Checks: "lab3:LAB3ENT|fourBitComparator:comparateur|oneBitComparator:comp3"
+ 44. Port Connectivity Checks: "lab3:LAB3ENT|fourBitComparator:comparateur"
+ 45. Port Connectivity Checks: "lab3:LAB3ENT|debouncer_2:rebondisseur|enARdFF_2:second"
+ 46. Port Connectivity Checks: "lab3:LAB3ENT|debouncer_2:rebondisseur|enARdFF_2:first"
+ 47. Port Connectivity Checks: "lab3:LAB3ENT|counter:MS|fourBitRegister:reg|enARdFF_2:lsb"
+ 48. Port Connectivity Checks: "lab3:LAB3ENT|counter:MS|fourBitRegister:reg|enARdFF_2:ssb"
+ 49. Port Connectivity Checks: "lab3:LAB3ENT|counter:MS|fourBitRegister:reg|enARdFF_2:smb"
+ 50. Port Connectivity Checks: "lab3:LAB3ENT|counter:MS|fourBitRegister:reg|enARdFF_2:msb"
+ 51. Port Connectivity Checks: "lab3:LAB3ENT|counter:MS|fourBitAdder:fa|oneBitAdder:add0"
+ 52. Port Connectivity Checks: "lab3:LAB3ENT|counter:MS|fourBitAdder:fa|oneBitAdder:add3"
+ 53. Port Connectivity Checks: "lab3:LAB3ENT|counter:MS|fourBitAdder:fa"
+ 54. Port Connectivity Checks: "lab3:LAB3ENT|clk_div:divHorloge"
+ 55. Elapsed Time Per Partition
+ 56. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++--------------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                         ;
++------------------------------------+-------------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Fri Dec 04 23:15:49 2015           ;
+; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
+; Revision Name                      ; UART                                            ;
+; Top-level Entity Name              ; ControleurUART                                  ;
+; Family                             ; Cyclone II                                      ;
+; Total logic elements               ; 164                                             ;
+;     Total combinational functions  ; 143                                             ;
+;     Dedicated logic registers      ; 118                                             ;
+; Total registers                    ; 118                                             ;
+; Total pins                         ; 42                                              ;
+; Total virtual pins                 ; 0                                               ;
+; Total memory bits                  ; 0                                               ;
+; Embedded Multiplier 9-bit elements ; 0                                               ;
+; Total PLLs                         ; 0                                               ;
++------------------------------------+-------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                        ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                     ; Setting            ; Default Value      ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                     ; EP2C35F672C6       ;                    ;
+; Top-level entity name                                                      ; ControleurUART     ; UART               ;
+; Family name                                                                ; Cyclone II         ; Cyclone IV GX      ;
+; Use smart compilation                                                      ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                                ; Off                ; Off                ;
+; Restructure Multiplexers                                                   ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                        ; Off                ; Off                ;
+; Preserve fewer node names                                                  ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                                  ; Off                ; Off                ;
+; Verilog Version                                                            ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                               ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                   ; Auto               ; Auto               ;
+; Safe State Machine                                                         ; Off                ; Off                ;
+; Extract Verilog State Machines                                             ; On                 ; On                 ;
+; Extract VHDL State Machines                                                ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                          ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                 ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                             ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                    ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                  ; On                 ; On                 ;
+; Parallel Synthesis                                                         ; On                 ; On                 ;
+; DSP Block Balancing                                                        ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                         ; On                 ; On                 ;
+; Power-Up Don't Care                                                        ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                               ; Off                ; Off                ;
+; Remove Duplicate Registers                                                 ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                       ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                     ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                      ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                  ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                       ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                        ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                             ; Off                ; Off                ;
+; Optimization Technique                                                     ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                         ; 70                 ; 70                 ;
+; Auto Carry Chains                                                          ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                       ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                      ; Off                ; Off                ;
+; Auto ROM Replacement                                                       ; On                 ; On                 ;
+; Auto RAM Replacement                                                       ; On                 ; On                 ;
+; Auto Shift Register Replacement                                            ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                            ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                              ; On                 ; On                 ;
+; Strict RAM Replacement                                                     ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                          ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                     ; Off                ; Off                ;
+; Auto RAM to Logic Cell Conversion                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                      ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                              ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                        ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                          ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                    ; Off                ; Off                ;
+; Report Parameter Settings                                                  ; On                 ; On                 ;
+; Report Source Assignments                                                  ; On                 ; On                 ;
+; Report Connectivity Checks                                                 ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                         ; Off                ; Off                ;
+; Synchronization Register Chain Length                                      ; 2                  ; 2                  ;
+; PowerPlay Power Optimization                                               ; Normal compilation ; Normal compilation ;
+; HDL message level                                                          ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                            ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                   ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                         ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                  ; 100                ; 100                ;
+; Clock MUX Protection                                                       ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                ; Off                ; Off                ;
+; Block Design Naming                                                        ; Auto               ; Auto               ;
+; SDC constraint protection                                                  ; Off                ; Off                ;
+; Synthesis Effort                                                           ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                       ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                         ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                     ; On                 ; On                 ;
+; Synthesis Seed                                                             ; 1                  ; 1                  ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 4           ;
+; Maximum allowed            ; 2           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 1           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processors 2-4         ;   0.0%      ;
++----------------------------+-------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                     ;
++-----------------------------------------------------------------+-----------------+-----------------+----------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path                                ; Used in Netlist ; File Type       ; File Name with Absolute Path                                               ; Library ;
++-----------------------------------------------------------------+-----------------+-----------------+----------------------------------------------------------------------------+---------+
+; ../../../Documents/Fall 2015/CEG3555/Lab3/segment7disp.vhd      ; yes             ; User VHDL File  ; C:/Users/David/Documents/Fall 2015/CEG3555/Lab3/segment7disp.vhd           ;         ;
+; ../../../Documents/Fall 2015/CEG3555/Lab3/Lab3.vhd              ; yes             ; User VHDL File  ; C:/Users/David/Documents/Fall 2015/CEG3555/Lab3/Lab3.vhd                   ;         ;
+; ../../../Documents/Fall 2015/CEG3555/Lab3/fourbitregister.vhd   ; yes             ; User VHDL File  ; C:/Users/David/Documents/Fall 2015/CEG3555/Lab3/fourbitregister.vhd        ;         ;
+; ../../../Documents/Fall 2015/CEG3555/Lab3/fourbitcomparator.vhd ; yes             ; User VHDL File  ; C:/Users/David/Documents/Fall 2015/CEG3555/Lab3/fourbitcomparator.vhd      ;         ;
+; ../../../Documents/Fall 2015/CEG3555/Lab3/fourbitadder.vhd      ; yes             ; User VHDL File  ; C:/Users/David/Documents/Fall 2015/CEG3555/Lab3/fourbitadder.vhd           ;         ;
+; ../../../Documents/Fall 2015/CEG3555/Lab3/debouncer_2.vhd       ; yes             ; User VHDL File  ; C:/Users/David/Documents/Fall 2015/CEG3555/Lab3/debouncer_2.vhd            ;         ;
+; ../../../Documents/Fall 2015/CEG3555/Lab3/CONTROLEUR.vhd        ; yes             ; User VHDL File  ; C:/Users/David/Documents/Fall 2015/CEG3555/Lab3/CONTROLEUR.vhd             ;         ;
+; ../../../Documents/Fall 2015/CEG3555/Lab3/compteur.vhd          ; yes             ; User VHDL File  ; C:/Users/David/Documents/Fall 2015/CEG3555/Lab3/compteur.vhd               ;         ;
+; Rami Code/onebitcomparator.vhd                                  ; yes             ; User VHDL File  ; C:/Users/David/Desktop/Projet_Marc/Code/Rami Code/onebitcomparator.vhd     ;         ;
+; Rami Code/onebitadder.vhd                                       ; yes             ; User VHDL File  ; C:/Users/David/Desktop/Projet_Marc/Code/Rami Code/onebitadder.vhd          ;         ;
+; Rami Code/enardFF_2.vhd                                         ; yes             ; User VHDL File  ; C:/Users/David/Desktop/Projet_Marc/Code/Rami Code/enardFF_2.vhd            ;         ;
+; UART.vhd                                                        ; yes             ; User VHDL File  ; C:/Users/David/Desktop/Projet_Marc/Code/UART.vhd                           ;         ;
+; eightBitRegister.vhd                                            ; yes             ; User VHDL File  ; C:/Users/David/Desktop/Projet_Marc/Code/eightBitRegister.vhd               ;         ;
+; Recepteur.vhd                                                   ; yes             ; User VHDL File  ; C:/Users/David/Desktop/Projet_Marc/Code/Recepteur.vhd                      ;         ;
+; VitesseDeBaud.vhd                                               ; yes             ; User VHDL File  ; C:/Users/David/Desktop/Projet_Marc/Code/VitesseDeBaud.vhd                  ;         ;
+; Emetteur.vhd                                                    ; yes             ; User VHDL File  ; C:/Users/David/Desktop/Projet_Marc/Code/Emetteur.vhd                       ;         ;
+; ControleurUART.vhd                                              ; yes             ; User VHDL File  ; C:/Users/David/Desktop/Projet_Marc/Code/ControleurUART.vhd                 ;         ;
+; clk_div.vhd                                                     ; yes             ; User VHDL File  ; C:/Users/David/Desktop/Projet_Marc/Code/clk_div.vhd                        ;         ;
+; eightBitShiftRegister.vhd                                       ; yes             ; User VHDL File  ; C:/Users/David/Desktop/Projet_Marc/Code/eightBitShiftRegister.vhd          ;         ;
+; RecepteurControl.vhd                                            ; yes             ; User VHDL File  ; C:/Users/David/Desktop/Projet_Marc/Code/RecepteurControl.vhd               ;         ;
+; clk_div41.vhd                                                   ; yes             ; User VHDL File  ; C:/Users/David/Desktop/Projet_Marc/Code/clk_div41.vhd                      ;         ;
+; clk_div256.vhd                                                  ; yes             ; User VHDL File  ; C:/Users/David/Desktop/Projet_Marc/Code/clk_div256.vhd                     ;         ;
+; eightToOneMux.vhd                                               ; yes             ; User VHDL File  ; C:/Users/David/Desktop/Projet_Marc/Code/eightToOneMux.vhd                  ;         ;
+; controleur_emetteur.vhd                                         ; yes             ; User VHDL File  ; C:/Users/David/Desktop/Projet_Marc/Code/controleur_emetteur.vhd            ;         ;
+; eightBitShiftRegister_emetteur.vhd                              ; yes             ; User VHDL File  ; C:/Users/David/Desktop/Projet_Marc/Code/eightBitShiftRegister_emetteur.vhd ;         ;
+; clk_div2.vhd                                                    ; yes             ; User VHDL File  ; C:/Users/David/Desktop/Projet_Marc/Code/clk_div2.vhd                       ;         ;
+; endArdFF_2R1.vhd                                                ; yes             ; User VHDL File  ; C:/Users/David/Desktop/Projet_Marc/Code/endArdFF_2R1.vhd                   ;         ;
++-----------------------------------------------------------------+-----------------+-----------------+----------------------------------------------------------------------------+---------+
+
+
++----------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary              ;
++---------------------------------------------+------------+
+; Resource                                    ; Usage      ;
++---------------------------------------------+------------+
+; Estimated Total logic elements              ; 164        ;
+;                                             ;            ;
+; Total combinational functions               ; 143        ;
+; Logic element usage by number of LUT inputs ;            ;
+;     -- 4 input functions                    ; 38         ;
+;     -- 3 input functions                    ; 48         ;
+;     -- <=2 input functions                  ; 57         ;
+;                                             ;            ;
+; Logic elements by mode                      ;            ;
+;     -- normal mode                          ; 134        ;
+;     -- arithmetic mode                      ; 9          ;
+;                                             ;            ;
+; Total registers                             ; 118        ;
+;     -- Dedicated logic registers            ; 118        ;
+;     -- I/O registers                        ; 0          ;
+;                                             ;            ;
+; I/O pins                                    ; 42         ;
+; Embedded Multiplier 9-bit elements          ; 0          ;
+; Maximum fan-out node                        ; i_resetBar ;
+; Maximum fan-out                             ; 57         ;
+; Total fan-out                               ; 763        ;
+; Average fan-out                             ; 2.52       ;
++---------------------------------------------+------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                             ;
++-------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------+--------------+
+; Compilation Hierarchy Node                      ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                ; Library Name ;
++-------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------+--------------+
+; |ControleurUART                                 ; 143 (0)           ; 118 (0)      ; 0           ; 0            ; 0       ; 0         ; 42   ; 0            ; |ControleurUART                                                                                    ; work         ;
+;    |UART:UART1|                                 ; 77 (0)            ; 73 (0)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|UART:UART1                                                                         ; work         ;
+;       |Emetteur:emetteur1|                      ; 23 (1)            ; 24 (0)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|UART:UART1|Emetteur:emetteur1                                                      ; work         ;
+;          |EmetteurControl:control_emetteur|     ; 11 (11)           ; 10 (10)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|UART:UART1|Emetteur:emetteur1|EmetteurControl:control_emetteur                     ; work         ;
+;          |eightBitRegister:RTD|                 ; 2 (0)             ; 6 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|UART:UART1|Emetteur:emetteur1|eightBitRegister:RTD                                 ; work         ;
+;             |enARdFF_2:bit2|                    ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|UART:UART1|Emetteur:emetteur1|eightBitRegister:RTD|enARdFF_2:bit2                  ; work         ;
+;             |enARdFF_2:bit3|                    ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|UART:UART1|Emetteur:emetteur1|eightBitRegister:RTD|enARdFF_2:bit3                  ; work         ;
+;             |enARdFF_2:bit4|                    ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|UART:UART1|Emetteur:emetteur1|eightBitRegister:RTD|enARdFF_2:bit4                  ; work         ;
+;             |enARdFF_2:bit5|                    ; 1 (1)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|UART:UART1|Emetteur:emetteur1|eightBitRegister:RTD|enARdFF_2:bit5                  ; work         ;
+;             |enARdFF_2:bit6|                    ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|UART:UART1|Emetteur:emetteur1|eightBitRegister:RTD|enARdFF_2:bit6                  ; work         ;
+;             |enARdFF_2:bit7|                    ; 1 (1)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|UART:UART1|Emetteur:emetteur1|eightBitRegister:RTD|enARdFF_2:bit7                  ; work         ;
+;          |eightBitShiftRegister_emetteur:RDTD|  ; 9 (9)             ; 8 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|UART:UART1|Emetteur:emetteur1|eightBitShiftRegister_emetteur:RDTD                  ; work         ;
+;             |enARdFF_2:bit1|                    ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|UART:UART1|Emetteur:emetteur1|eightBitShiftRegister_emetteur:RDTD|enARdFF_2:bit1   ; work         ;
+;             |enARdFF_2:bit2|                    ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|UART:UART1|Emetteur:emetteur1|eightBitShiftRegister_emetteur:RDTD|enARdFF_2:bit2   ; work         ;
+;             |enARdFF_2:bit3|                    ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|UART:UART1|Emetteur:emetteur1|eightBitShiftRegister_emetteur:RDTD|enARdFF_2:bit3   ; work         ;
+;             |enARdFF_2:bit4|                    ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|UART:UART1|Emetteur:emetteur1|eightBitShiftRegister_emetteur:RDTD|enARdFF_2:bit4   ; work         ;
+;             |enARdFF_2:bit5|                    ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|UART:UART1|Emetteur:emetteur1|eightBitShiftRegister_emetteur:RDTD|enARdFF_2:bit5   ; work         ;
+;             |enARdFF_2:bit6|                    ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|UART:UART1|Emetteur:emetteur1|eightBitShiftRegister_emetteur:RDTD|enARdFF_2:bit6   ; work         ;
+;             |enARdFF_2R1:bit0|                  ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|UART:UART1|Emetteur:emetteur1|eightBitShiftRegister_emetteur:RDTD|enARdFF_2R1:bit0 ; work         ;
+;             |enARdFF_2R1:bit7|                  ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|UART:UART1|Emetteur:emetteur1|eightBitShiftRegister_emetteur:RDTD|enARdFF_2R1:bit7 ; work         ;
+;       |Recepteur:recepteur1|                    ; 21 (0)            ; 30 (0)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|UART:UART1|Recepteur:recepteur1                                                    ; work         ;
+;          |RecepteurControl:ControleurRecepteur| ; 21 (21)           ; 14 (14)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|UART:UART1|Recepteur:recepteur1|RecepteurControl:ControleurRecepteur               ; work         ;
+;          |eightBitRegister:RRD|                 ; 0 (0)             ; 8 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|UART:UART1|Recepteur:recepteur1|eightBitRegister:RRD                               ; work         ;
+;             |enARdFF_2:bit0|                    ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|UART:UART1|Recepteur:recepteur1|eightBitRegister:RRD|enARdFF_2:bit0                ; work         ;
+;             |enARdFF_2:bit1|                    ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|UART:UART1|Recepteur:recepteur1|eightBitRegister:RRD|enARdFF_2:bit1                ; work         ;
+;             |enARdFF_2:bit2|                    ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|UART:UART1|Recepteur:recepteur1|eightBitRegister:RRD|enARdFF_2:bit2                ; work         ;
+;             |enARdFF_2:bit3|                    ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|UART:UART1|Recepteur:recepteur1|eightBitRegister:RRD|enARdFF_2:bit3                ; work         ;
+;             |enARdFF_2:bit4|                    ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|UART:UART1|Recepteur:recepteur1|eightBitRegister:RRD|enARdFF_2:bit4                ; work         ;
+;             |enARdFF_2:bit5|                    ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|UART:UART1|Recepteur:recepteur1|eightBitRegister:RRD|enARdFF_2:bit5                ; work         ;
+;             |enARdFF_2:bit6|                    ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|UART:UART1|Recepteur:recepteur1|eightBitRegister:RRD|enARdFF_2:bit6                ; work         ;
+;             |enARdFF_2:bit7|                    ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|UART:UART1|Recepteur:recepteur1|eightBitRegister:RRD|enARdFF_2:bit7                ; work         ;
+;          |eightBitShiftRegister:RDRD|           ; 0 (0)             ; 8 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|UART:UART1|Recepteur:recepteur1|eightBitShiftRegister:RDRD                         ; work         ;
+;             |enARdFF_2:bit0|                    ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|UART:UART1|Recepteur:recepteur1|eightBitShiftRegister:RDRD|enARdFF_2:bit0          ; work         ;
+;             |enARdFF_2:bit1|                    ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|UART:UART1|Recepteur:recepteur1|eightBitShiftRegister:RDRD|enARdFF_2:bit1          ; work         ;
+;             |enARdFF_2:bit2|                    ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|UART:UART1|Recepteur:recepteur1|eightBitShiftRegister:RDRD|enARdFF_2:bit2          ; work         ;
+;             |enARdFF_2:bit3|                    ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|UART:UART1|Recepteur:recepteur1|eightBitShiftRegister:RDRD|enARdFF_2:bit3          ; work         ;
+;             |enARdFF_2:bit4|                    ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|UART:UART1|Recepteur:recepteur1|eightBitShiftRegister:RDRD|enARdFF_2:bit4          ; work         ;
+;             |enARdFF_2:bit5|                    ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|UART:UART1|Recepteur:recepteur1|eightBitShiftRegister:RDRD|enARdFF_2:bit5          ; work         ;
+;             |enARdFF_2:bit6|                    ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|UART:UART1|Recepteur:recepteur1|eightBitShiftRegister:RDRD|enARdFF_2:bit6          ; work         ;
+;             |enARdFF_2:bit7|                    ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|UART:UART1|Recepteur:recepteur1|eightBitShiftRegister:RDRD|enARdFF_2:bit7          ; work         ;
+;       |VitesseDeBaud:vitesseDeBaud1|            ; 33 (0)            ; 18 (0)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|UART:UART1|VitesseDeBaud:vitesseDeBaud1                                            ; work         ;
+;          |clk_div256:div256|                    ; 8 (0)             ; 8 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|UART:UART1|VitesseDeBaud:vitesseDeBaud1|clk_div256:div256                          ; work         ;
+;             |clk_div2:div128|                   ; 1 (1)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|UART:UART1|VitesseDeBaud:vitesseDeBaud1|clk_div256:div256|clk_div2:div128          ; work         ;
+;             |clk_div2:div16|                    ; 1 (1)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|UART:UART1|VitesseDeBaud:vitesseDeBaud1|clk_div256:div256|clk_div2:div16           ; work         ;
+;             |clk_div2:div256|                   ; 1 (1)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|UART:UART1|VitesseDeBaud:vitesseDeBaud1|clk_div256:div256|clk_div2:div256          ; work         ;
+;             |clk_div2:div2|                     ; 1 (1)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|UART:UART1|VitesseDeBaud:vitesseDeBaud1|clk_div256:div256|clk_div2:div2            ; work         ;
+;             |clk_div2:div32|                    ; 1 (1)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|UART:UART1|VitesseDeBaud:vitesseDeBaud1|clk_div256:div256|clk_div2:div32           ; work         ;
+;             |clk_div2:div4|                     ; 1 (1)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|UART:UART1|VitesseDeBaud:vitesseDeBaud1|clk_div256:div256|clk_div2:div4            ; work         ;
+;             |clk_div2:div64|                    ; 1 (1)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|UART:UART1|VitesseDeBaud:vitesseDeBaud1|clk_div256:div256|clk_div2:div64           ; work         ;
+;             |clk_div2:div8|                     ; 1 (1)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|UART:UART1|VitesseDeBaud:vitesseDeBaud1|clk_div256:div256|clk_div2:div8            ; work         ;
+;          |clk_div256:div8|                      ; 3 (0)             ; 3 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|UART:UART1|VitesseDeBaud:vitesseDeBaud1|clk_div256:div8                            ; work         ;
+;             |clk_div2:div2|                     ; 1 (1)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|UART:UART1|VitesseDeBaud:vitesseDeBaud1|clk_div256:div8|clk_div2:div2              ; work         ;
+;             |clk_div2:div4|                     ; 1 (1)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|UART:UART1|VitesseDeBaud:vitesseDeBaud1|clk_div256:div8|clk_div2:div4              ; work         ;
+;             |clk_div2:div8|                     ; 1 (1)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|UART:UART1|VitesseDeBaud:vitesseDeBaud1|clk_div256:div8|clk_div2:div8              ; work         ;
+;          |clk_div41:div41|                      ; 8 (8)             ; 7 (7)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|UART:UART1|VitesseDeBaud:vitesseDeBaud1|clk_div41:div41                            ; work         ;
+;          |eightToOneMux:mux|                    ; 14 (14)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|UART:UART1|VitesseDeBaud:vitesseDeBaud1|eightToOneMux:mux                          ; work         ;
+;       |enARdFF_2:RTDV|                          ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|UART:UART1|enARdFF_2:RTDV                                                          ; work         ;
+;    |lab3:LAB3ENT|                               ; 66 (2)            ; 45 (0)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|lab3:LAB3ENT                                                                       ; work         ;
+;       |clk_div:divHorloge|                      ; 31 (31)           ; 31 (31)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|lab3:LAB3ENT|clk_div:divHorloge                                                    ; work         ;
+;       |controleur:CONT|                         ; 11 (11)           ; 4 (4)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|lab3:LAB3ENT|controleur:CONT                                                       ; work         ;
+;       |counter:MST_Jaune|                       ; 3 (0)             ; 3 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|lab3:LAB3ENT|counter:MST_Jaune                                                     ; work         ;
+;          |fourBitRegister:reg|                  ; 3 (0)             ; 3 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|lab3:LAB3ENT|counter:MST_Jaune|fourBitRegister:reg                                 ; work         ;
+;             |enARdFF_2:msb|                     ; 1 (1)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|lab3:LAB3ENT|counter:MST_Jaune|fourBitRegister:reg|enARdFF_2:msb                   ; work         ;
+;             |enARdFF_2:smb|                     ; 1 (1)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|lab3:LAB3ENT|counter:MST_Jaune|fourBitRegister:reg|enARdFF_2:smb                   ; work         ;
+;             |enARdFF_2:ssb|                     ; 1 (1)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|lab3:LAB3ENT|counter:MST_Jaune|fourBitRegister:reg|enARdFF_2:ssb                   ; work         ;
+;       |counter:MS|                              ; 4 (0)             ; 3 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|lab3:LAB3ENT|counter:MS                                                            ; work         ;
+;          |fourBitRegister:reg|                  ; 4 (0)             ; 3 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|lab3:LAB3ENT|counter:MS|fourBitRegister:reg                                        ; work         ;
+;             |enARdFF_2:msb|                     ; 1 (1)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|lab3:LAB3ENT|counter:MS|fourBitRegister:reg|enARdFF_2:msb                          ; work         ;
+;             |enARdFF_2:smb|                     ; 2 (2)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|lab3:LAB3ENT|counter:MS|fourBitRegister:reg|enARdFF_2:smb                          ; work         ;
+;             |enARdFF_2:ssb|                     ; 1 (1)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|lab3:LAB3ENT|counter:MS|fourBitRegister:reg|enARdFF_2:ssb                          ; work         ;
+;       |counter:SST_Jaune|                       ; 1 (0)             ; 1 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|lab3:LAB3ENT|counter:SST_Jaune                                                     ; work         ;
+;          |fourBitRegister:reg|                  ; 1 (0)             ; 1 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|lab3:LAB3ENT|counter:SST_Jaune|fourBitRegister:reg                                 ; work         ;
+;             |enARdFF_2:lsb|                     ; 1 (1)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|lab3:LAB3ENT|counter:SST_Jaune|fourBitRegister:reg|enARdFF_2:lsb                   ; work         ;
+;       |counter:SS|                              ; 1 (0)             ; 1 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|lab3:LAB3ENT|counter:SS                                                            ; work         ;
+;          |fourBitRegister:reg|                  ; 1 (0)             ; 1 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|lab3:LAB3ENT|counter:SS|fourBitRegister:reg                                        ; work         ;
+;             |enARdFF_2:lsb|                     ; 1 (1)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|lab3:LAB3ENT|counter:SS|fourBitRegister:reg|enARdFF_2:lsb                          ; work         ;
+;       |debouncer_2:rebondisseur|                ; 2 (2)             ; 2 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|lab3:LAB3ENT|debouncer_2:rebondisseur                                              ; work         ;
+;          |enARdFF_2:first|                      ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|lab3:LAB3ENT|debouncer_2:rebondisseur|enARdFF_2:first                              ; work         ;
+;          |enARdFF_2:second|                     ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|lab3:LAB3ENT|debouncer_2:rebondisseur|enARdFF_2:second                             ; work         ;
+;       |fourBitComparator:comparateur|           ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|lab3:LAB3ENT|fourBitComparator:comparateur                                         ; work         ;
+;       |segment7disp:seg|                        ; 8 (8)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ControleurUART|lab3:LAB3ENT|segment7disp:seg                                                      ; work         ;
++-------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++--------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |ControleurUART|UART:UART1|Recepteur:recepteur1|RecepteurControl:ControleurRecepteur|presentState        ;
++--------------------+-------------------+--------------------+-------------------+--------------------+-------------------+
+; Name               ; presentState.SAVE ; presentState.PAUSE ; presentState.DATA ; presentState.START ; presentState.IDLE ;
++--------------------+-------------------+--------------------+-------------------+--------------------+-------------------+
+; presentState.IDLE  ; 0                 ; 0                  ; 0                 ; 0                  ; 0                 ;
+; presentState.START ; 0                 ; 0                  ; 0                 ; 1                  ; 1                 ;
+; presentState.DATA  ; 0                 ; 0                  ; 1                 ; 0                  ; 1                 ;
+; presentState.PAUSE ; 0                 ; 1                  ; 0                 ; 0                  ; 1                 ;
+; presentState.SAVE  ; 1                 ; 0                  ; 0                 ; 0                  ; 1                 ;
++--------------------+-------------------+--------------------+-------------------+--------------------+-------------------+
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |ControleurUART|UART:UART1|Emetteur:emetteur1|EmetteurControl:control_emetteur|presentState                                         ;
++-----------------------+-------------------+-------------------+--------------------+--------------------+-----------------------+-------------------+
+; Name                  ; presentState.STOP ; presentState.DATA ; presentState.START ; presentState.READY ; presentState.DETECTED ; presentState.IDLE ;
++-----------------------+-------------------+-------------------+--------------------+--------------------+-----------------------+-------------------+
+; presentState.IDLE     ; 0                 ; 0                 ; 0                  ; 0                  ; 0                     ; 0                 ;
+; presentState.DETECTED ; 0                 ; 0                 ; 0                  ; 0                  ; 1                     ; 1                 ;
+; presentState.READY    ; 0                 ; 0                 ; 0                  ; 1                  ; 0                     ; 1                 ;
+; presentState.START    ; 0                 ; 0                 ; 1                  ; 0                  ; 0                     ; 1                 ;
+; presentState.DATA     ; 0                 ; 1                 ; 0                  ; 0                  ; 0                     ; 1                 ;
+; presentState.STOP     ; 1                 ; 0                 ; 0                  ; 0                  ; 0                     ; 1                 ;
++-----------------------+-------------------+-------------------+--------------------+--------------------+-----------------------+-------------------+
+
+
+Encoding Type:  One-Hot
++------------------------------------------------------------------------------------+
+; State Machine - |ControleurUART|lab3:LAB3ENT|controleur:CONT|presentState          ;
++----------------+----------------+----------------+----------------+----------------+
+; Name           ; presentState.D ; presentState.C ; presentState.B ; presentState.A ;
++----------------+----------------+----------------+----------------+----------------+
+; presentState.A ; 0              ; 0              ; 0              ; 0              ;
+; presentState.B ; 0              ; 0              ; 1              ; 1              ;
+; presentState.C ; 0              ; 1              ; 0              ; 1              ;
+; presentState.D ; 1              ; 0              ; 0              ; 1              ;
++----------------+----------------+----------------+----------------+----------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                                                           ;
++-------------------------------------------------------------------------+------------------------------------------------------------------------------------+
+; Register name                                                           ; Reason for Removal                                                                 ;
++-------------------------------------------------------------------------+------------------------------------------------------------------------------------+
+; UART:UART1|Emetteur:emetteur1|eightBitRegister:RTD|enARdFF_2:bit0|int_q ; Stuck at GND due to stuck port data_in                                             ;
+; UART:UART1|Emetteur:emetteur1|eightBitRegister:RTD|enARdFF_2:bit1|int_q ; Stuck at GND due to stuck port data_in                                             ;
+; lab3:LAB3ENT|counter:MST_Jaune|fourBitRegister:reg|enARdFF_2:lsb|int_q  ; Merged with lab3:LAB3ENT|counter:SST_Jaune|fourBitRegister:reg|enARdFF_2:lsb|int_q ;
+; lab3:LAB3ENT|counter:MS|fourBitRegister:reg|enARdFF_2:lsb|int_q         ; Merged with lab3:LAB3ENT|counter:SS|fourBitRegister:reg|enARdFF_2:lsb|int_q        ;
+; lab3:LAB3ENT|counter:SST_Jaune|fourBitRegister:reg|enARdFF_2:ssb|int_q  ; Merged with lab3:LAB3ENT|counter:MST_Jaune|fourBitRegister:reg|enARdFF_2:ssb|int_q ;
+; lab3:LAB3ENT|counter:SST_Jaune|fourBitRegister:reg|enARdFF_2:smb|int_q  ; Merged with lab3:LAB3ENT|counter:MST_Jaune|fourBitRegister:reg|enARdFF_2:smb|int_q ;
+; lab3:LAB3ENT|counter:SST_Jaune|fourBitRegister:reg|enARdFF_2:msb|int_q  ; Merged with lab3:LAB3ENT|counter:MST_Jaune|fourBitRegister:reg|enARdFF_2:msb|int_q ;
+; lab3:LAB3ENT|counter:SS|fourBitRegister:reg|enARdFF_2:ssb|int_q         ; Merged with lab3:LAB3ENT|counter:MS|fourBitRegister:reg|enARdFF_2:ssb|int_q        ;
+; lab3:LAB3ENT|counter:SS|fourBitRegister:reg|enARdFF_2:smb|int_q         ; Merged with lab3:LAB3ENT|counter:MS|fourBitRegister:reg|enARdFF_2:smb|int_q        ;
+; lab3:LAB3ENT|counter:SS|fourBitRegister:reg|enARdFF_2:msb|int_q         ; Merged with lab3:LAB3ENT|counter:MS|fourBitRegister:reg|enARdFF_2:msb|int_q        ;
+; Total Number of Removed Registers = 10                                  ;                                                                                    ;
++-------------------------------------------------------------------------+------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 118   ;
+; Number of registers using Synchronous Clear  ; 11    ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 69    ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 32    ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++----------------------------------------------------------------------------------------------------+
+; Inverted Register Statistics                                                                       ;
++------------------------------------------------------------------------------------------+---------+
+; Inverted Register                                                                        ; Fan out ;
++------------------------------------------------------------------------------------------+---------+
+; UART:UART1|Recepteur:recepteur1|RecepteurControl:ControleurRecepteur|compte8[0]          ; 5       ;
+; UART:UART1|Emetteur:emetteur1|eightBitShiftRegister_emetteur:RDTD|enARdFF_2R1:bit0|int_q ; 2       ;
+; UART:UART1|Emetteur:emetteur1|eightBitShiftRegister_emetteur:RDTD|enARdFF_2R1:bit7|int_q ; 1       ;
+; Total number of inverted registers = 3                                                   ;         ;
++------------------------------------------------------------------------------------------+---------+
+
+
++-----------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "UART:UART1|VitesseDeBaud:vitesseDeBaud1|clk_div256:div8"                                   ;
++-------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port        ; Type   ; Severity ; Details                                                                             ;
++-------------+--------+----------+-------------------------------------------------------------------------------------+
+; o_div[7..3] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; o_div[1..0] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "UART:UART1|Recepteur:recepteur1|eightBitShiftRegister:RDRD|enARdFF_2:bit0"            ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; Port   ; Type   ; Severity ; Details                                                                             ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; o_qbar ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "UART:UART1|Recepteur:recepteur1|eightBitShiftRegister:RDRD|enARdFF_2:bit1"            ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; Port   ; Type   ; Severity ; Details                                                                             ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; o_qbar ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "UART:UART1|Recepteur:recepteur1|eightBitShiftRegister:RDRD|enARdFF_2:bit2"            ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; Port   ; Type   ; Severity ; Details                                                                             ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; o_qbar ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "UART:UART1|Recepteur:recepteur1|eightBitShiftRegister:RDRD|enARdFF_2:bit3"            ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; Port   ; Type   ; Severity ; Details                                                                             ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; o_qbar ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "UART:UART1|Recepteur:recepteur1|eightBitShiftRegister:RDRD|enARdFF_2:bit4"            ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; Port   ; Type   ; Severity ; Details                                                                             ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; o_qbar ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "UART:UART1|Recepteur:recepteur1|eightBitShiftRegister:RDRD|enARdFF_2:bit5"            ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; Port   ; Type   ; Severity ; Details                                                                             ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; o_qbar ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "UART:UART1|Recepteur:recepteur1|eightBitShiftRegister:RDRD|enARdFF_2:bit6"            ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; Port   ; Type   ; Severity ; Details                                                                             ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; o_qbar ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "UART:UART1|Recepteur:recepteur1|eightBitShiftRegister:RDRD|enARdFF_2:bit7"            ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; Port   ; Type   ; Severity ; Details                                                                             ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; o_qbar ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "UART:UART1|Emetteur:emetteur1|eightBitShiftRegister_emetteur:RDTD|enARdFF_2R1:bit0"   ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; Port   ; Type   ; Severity ; Details                                                                             ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; o_qbar ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "UART:UART1|Emetteur:emetteur1|eightBitShiftRegister_emetteur:RDTD|enARdFF_2:bit1"     ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; Port   ; Type   ; Severity ; Details                                                                             ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; o_qbar ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "UART:UART1|Emetteur:emetteur1|eightBitShiftRegister_emetteur:RDTD|enARdFF_2:bit2"     ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; Port   ; Type   ; Severity ; Details                                                                             ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; o_qbar ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "UART:UART1|Emetteur:emetteur1|eightBitShiftRegister_emetteur:RDTD|enARdFF_2:bit3"     ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; Port   ; Type   ; Severity ; Details                                                                             ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; o_qbar ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "UART:UART1|Emetteur:emetteur1|eightBitShiftRegister_emetteur:RDTD|enARdFF_2:bit4"     ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; Port   ; Type   ; Severity ; Details                                                                             ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; o_qbar ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "UART:UART1|Emetteur:emetteur1|eightBitShiftRegister_emetteur:RDTD|enARdFF_2:bit5"     ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; Port   ; Type   ; Severity ; Details                                                                             ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; o_qbar ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "UART:UART1|Emetteur:emetteur1|eightBitShiftRegister_emetteur:RDTD|enARdFF_2:bit6"     ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; Port   ; Type   ; Severity ; Details                                                                             ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; o_qbar ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "UART:UART1|Emetteur:emetteur1|eightBitShiftRegister_emetteur:RDTD|enARdFF_2R1:bit7"   ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; Port   ; Type   ; Severity ; Details                                                                             ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; o_qbar ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "UART:UART1|Emetteur:emetteur1|eightBitShiftRegister_emetteur:RDTD"                      ;
++----------+--------+----------+-------------------------------------------------------------------------------------+
+; Port     ; Type   ; Severity ; Details                                                                             ;
++----------+--------+----------+-------------------------------------------------------------------------------------+
+; i_value  ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; o_values ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++----------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "UART:UART1|Emetteur:emetteur1|eightBitRegister:RTD|enARdFF_2:bit0"                    ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; Port   ; Type   ; Severity ; Details                                                                             ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; o_qbar ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "UART:UART1|Emetteur:emetteur1|eightBitRegister:RTD|enARdFF_2:bit1"                    ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; Port   ; Type   ; Severity ; Details                                                                             ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; o_qbar ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "UART:UART1|Emetteur:emetteur1|eightBitRegister:RTD|enARdFF_2:bit2"                    ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; Port   ; Type   ; Severity ; Details                                                                             ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; o_qbar ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "UART:UART1|Emetteur:emetteur1|eightBitRegister:RTD|enARdFF_2:bit3"                    ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; Port   ; Type   ; Severity ; Details                                                                             ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; o_qbar ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "UART:UART1|Emetteur:emetteur1|eightBitRegister:RTD|enARdFF_2:bit4"                    ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; Port   ; Type   ; Severity ; Details                                                                             ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; o_qbar ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "UART:UART1|Emetteur:emetteur1|eightBitRegister:RTD|enARdFF_2:bit5"                    ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; Port   ; Type   ; Severity ; Details                                                                             ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; o_qbar ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "UART:UART1|Emetteur:emetteur1|eightBitRegister:RTD|enARdFF_2:bit6"                    ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; Port   ; Type   ; Severity ; Details                                                                             ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; o_qbar ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "UART:UART1|Emetteur:emetteur1|eightBitRegister:RTD|enARdFF_2:bit7"                    ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; Port   ; Type   ; Severity ; Details                                                                             ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; o_qbar ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "UART:UART1|enARdFF_2:RRDP"                                                                                   ;
++----------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; Port     ; Type   ; Severity ; Details                                                                                                  ;
++----------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; i_enable ; Input  ; Info     ; Stuck at VCC                                                                                             ;
+; o_qbar   ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
++----------+--------+----------+----------------------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "UART:UART1|enARdFF_2:RTDV"                                                                                   ;
++----------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; Port     ; Type   ; Severity ; Details                                                                                                  ;
++----------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; i_enable ; Input  ; Info     ; Stuck at VCC                                                                                             ;
+; o_qbar   ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
++----------+--------+----------+----------------------------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------+
+; Port Connectivity Checks: "UART:UART1"            ;
++-----------------+-------+----------+--------------+
+; Port            ; Type  ; Severity ; Details      ;
++-----------------+-------+----------+--------------+
+; i_donnees[1..0] ; Input ; Info     ; Stuck at GND ;
++-----------------+-------+----------+--------------+
+
+
++-----------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "lab3:LAB3ENT|fourBitComparator:comparateur|oneBitComparator:comp3" ;
++--------------+-------+----------+-------------------------------------------------------------+
+; Port         ; Type  ; Severity ; Details                                                     ;
++--------------+-------+----------+-------------------------------------------------------------+
+; i_gtprevious ; Input ; Info     ; Stuck at GND                                                ;
+; i_ltprevious ; Input ; Info     ; Stuck at GND                                                ;
++--------------+-------+----------+-------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "lab3:LAB3ENT|fourBitComparator:comparateur"                                                              ;
++------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                                                  ;
++------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; o_gt ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
+; o_lt ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+----------------------------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "lab3:LAB3ENT|debouncer_2:rebondisseur|enARdFF_2:second" ;
++----------+-------+----------+------------------------------------------------------+
+; Port     ; Type  ; Severity ; Details                                              ;
++----------+-------+----------+------------------------------------------------------+
+; i_enable ; Input ; Info     ; Stuck at VCC                                         ;
++----------+-------+----------+------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "lab3:LAB3ENT|debouncer_2:rebondisseur|enARdFF_2:first"                                  ;
++----------+--------+----------+-------------------------------------------------------------------------------------+
+; Port     ; Type   ; Severity ; Details                                                                             ;
++----------+--------+----------+-------------------------------------------------------------------------------------+
+; i_enable ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; o_q      ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++----------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "lab3:LAB3ENT|counter:MS|fourBitRegister:reg|enARdFF_2:lsb"                            ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; Port   ; Type   ; Severity ; Details                                                                             ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; o_qbar ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "lab3:LAB3ENT|counter:MS|fourBitRegister:reg|enARdFF_2:ssb"                            ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; Port   ; Type   ; Severity ; Details                                                                             ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; o_qbar ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "lab3:LAB3ENT|counter:MS|fourBitRegister:reg|enARdFF_2:smb"                            ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; Port   ; Type   ; Severity ; Details                                                                             ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; o_qbar ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "lab3:LAB3ENT|counter:MS|fourBitRegister:reg|enARdFF_2:msb"                            ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; Port   ; Type   ; Severity ; Details                                                                             ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; o_qbar ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "lab3:LAB3ENT|counter:MS|fourBitAdder:fa|oneBitAdder:add0" ;
++-----------+-------+----------+-------------------------------------------------------+
+; Port      ; Type  ; Severity ; Details                                               ;
++-----------+-------+----------+-------------------------------------------------------+
+; i_carryin ; Input ; Info     ; Stuck at GND                                          ;
++-----------+-------+----------+-------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "lab3:LAB3ENT|counter:MS|fourBitAdder:fa|oneBitAdder:add3"                                 ;
++------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port       ; Type   ; Severity ; Details                                                                             ;
++------------+--------+----------+-------------------------------------------------------------------------------------+
+; o_carryout ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "lab3:LAB3ENT|counter:MS|fourBitAdder:fa"                                                                       ;
++------------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; Port       ; Type   ; Severity ; Details                                                                                                  ;
++------------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; i_bi[3..1] ; Input  ; Info     ; Stuck at GND                                                                                             ;
+; i_bi[0]    ; Input  ; Info     ; Stuck at VCC                                                                                             ;
+; o_carryout ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
++------------+--------+----------+----------------------------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "lab3:LAB3ENT|clk_div:divHorloge"                                                                                 ;
++--------------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; Port         ; Type   ; Severity ; Details                                                                                                  ;
++--------------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; clock_1mhz   ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
+; clock_100khz ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
+; clock_10khz  ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
+; clock_1khz   ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
+; clock_100hz  ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
+; clock_10hz   ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
++--------------+--------+----------+----------------------------------------------------------------------------------------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:01     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 64-Bit Analysis & Synthesis
+    Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+    Info: Processing started: Fri Dec 04 23:15:44 2015
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off UART -c UART
+Info (11104): Parallel Compilation has detected 4 hyper-threaded processors. However, the extra hyper-threaded processors will not be used by default. Parallel Compilation will use 2 of the 2 physical processors detected instead.
+Info (12021): Found 2 design units, including 1 entities, in source file /users/david/documents/fall 2015/ceg3555/lab3/segment7disp.vhd
+    Info (12022): Found design unit 1: segment7disp-rtl
+    Info (12023): Found entity 1: segment7disp
+Info (12021): Found 4 design units, including 2 entities, in source file /users/david/documents/fall 2015/ceg3555/lab3/timer.vhd
+    Info (12022): Found design unit 1: timer-behavioural
+    Info (12022): Found design unit 2: tb_timer-foo
+    Info (12023): Found entity 1: timer
+    Info (12023): Found entity 2: tb_timer
+Info (12021): Found 2 design units, including 1 entities, in source file /users/david/documents/fall 2015/ceg3555/lab3/threebitcomparator.vhd
+    Info (12022): Found design unit 1: threeBitComparator-rtl
+    Info (12023): Found entity 1: threeBitComparator
+Info (12021): Found 2 design units, including 1 entities, in source file /users/david/documents/fall 2015/ceg3555/lab3/lab3.vhd
+    Info (12022): Found design unit 1: lab3-basic
+    Info (12023): Found entity 1: lab3
+Info (12021): Found 2 design units, including 1 entities, in source file /users/david/documents/fall 2015/ceg3555/lab3/fourbitregister.vhd
+    Info (12022): Found design unit 1: fourBitRegister-rtl
+    Info (12023): Found entity 1: fourBitRegister
+Info (12021): Found 2 design units, including 1 entities, in source file /users/david/documents/fall 2015/ceg3555/lab3/fourbitcomparator.vhd
+    Info (12022): Found design unit 1: fourBitComparator-rtl
+    Info (12023): Found entity 1: fourBitComparator
+Info (12021): Found 2 design units, including 1 entities, in source file /users/david/documents/fall 2015/ceg3555/lab3/fourbitadder.vhd
+    Info (12022): Found design unit 1: fourBitAdder-rtl
+    Info (12023): Found entity 1: fourBitAdder
+Info (12021): Found 2 design units, including 1 entities, in source file /users/david/documents/fall 2015/ceg3555/lab3/debouncer_2.vhd
+    Info (12022): Found design unit 1: debouncer_2-rtl
+    Info (12023): Found entity 1: debouncer_2
+Info (12021): Found 2 design units, including 1 entities, in source file /users/david/documents/fall 2015/ceg3555/lab3/controleur.vhd
+    Info (12022): Found design unit 1: controleur-rtl
+    Info (12023): Found entity 1: controleur
+Info (12021): Found 2 design units, including 1 entities, in source file /users/david/documents/fall 2015/ceg3555/lab3/compteur.vhd
+    Info (12022): Found design unit 1: counter-rtl
+    Info (12023): Found entity 1: counter
+Info (12021): Found 2 design units, including 1 entities, in source file rami code/threebitshiftregister.vhd
+    Info (12022): Found design unit 1: threeBitShiftRegister-rtl
+    Info (12023): Found entity 1: threeBitShiftRegister
+Info (12021): Found 2 design units, including 1 entities, in source file rami code/threebitregister.vhd
+    Info (12022): Found design unit 1: threeBitRegister-rtl
+    Info (12023): Found entity 1: threeBitRegister
+Info (12021): Found 2 design units, including 1 entities, in source file rami code/threebitadder.vhd
+    Info (12022): Found design unit 1: threeBitAdder-rtl
+    Info (12023): Found entity 1: threeBitAdder
+Info (12021): Found 2 design units, including 1 entities, in source file rami code/srlatch.vhd
+    Info (12022): Found design unit 1: srLatch-rtl
+    Info (12023): Found entity 1: srLatch
+Info (12021): Found 2 design units, including 1 entities, in source file rami code/sbarrbarlatch.vhd
+    Info (12022): Found design unit 1: sBarrBarLatch-rtl
+    Info (12023): Found entity 1: sBarrBarLatch
+Info (12021): Found 2 design units, including 1 entities, in source file rami code/onebitcomparator.vhd
+    Info (12022): Found design unit 1: oneBitComparator-rtl
+    Info (12023): Found entity 1: oneBitComparator
+Info (12021): Found 2 design units, including 1 entities, in source file rami code/onebitadder.vhd
+    Info (12022): Found design unit 1: oneBitAdder-rtl
+    Info (12023): Found entity 1: oneBitAdder
+Info (12021): Found 2 design units, including 1 entities, in source file rami code/jkff_2.vhd
+    Info (12022): Found design unit 1: jkFF_2-rtl
+    Info (12023): Found entity 1: jkFF_2
+Info (12021): Found 2 design units, including 1 entities, in source file rami code/endff_2.vhd
+    Info (12022): Found design unit 1: endFF_2-rtl
+    Info (12023): Found entity 1: endFF_2
+Info (12021): Found 2 design units, including 1 entities, in source file rami code/enardff_2.vhd
+    Info (12022): Found design unit 1: enARdFF_2-rtl
+    Info (12023): Found entity 1: enARdFF_2
+Info (12021): Found 2 design units, including 1 entities, in source file rami code/dff_2.vhd
+    Info (12022): Found design unit 1: dFF_2-rtl
+    Info (12023): Found entity 1: dFF_2
+Info (12021): Found 2 design units, including 1 entities, in source file uart.vhd
+    Info (12022): Found design unit 1: UART-Basic
+    Info (12023): Found entity 1: UART
+Info (12021): Found 2 design units, including 1 entities, in source file eightbitregister.vhd
+    Info (12022): Found design unit 1: eightBitRegister-rtl
+    Info (12023): Found entity 1: eightBitRegister
+Info (12021): Found 2 design units, including 1 entities, in source file recepteur.vhd
+    Info (12022): Found design unit 1: Recepteur-basic
+    Info (12023): Found entity 1: Recepteur
+Info (12021): Found 2 design units, including 1 entities, in source file vitessedebaud.vhd
+    Info (12022): Found design unit 1: VitesseDeBaud-basic
+    Info (12023): Found entity 1: VitesseDeBaud
+Info (12021): Found 2 design units, including 1 entities, in source file emetteur.vhd
+    Info (12022): Found design unit 1: Emetteur-basic
+    Info (12023): Found entity 1: Emetteur
+Info (12021): Found 2 design units, including 1 entities, in source file controleuruart.vhd
+    Info (12022): Found design unit 1: ControleurUART-basic
+    Info (12023): Found entity 1: ControleurUART
+Info (12021): Found 2 design units, including 1 entities, in source file clk_div.vhd
+    Info (12022): Found design unit 1: clk_div-a
+    Info (12023): Found entity 1: clk_div
+Info (12021): Found 2 design units, including 1 entities, in source file eightbitshiftregister.vhd
+    Info (12022): Found design unit 1: eightBitShiftRegister-rtl
+    Info (12023): Found entity 1: eightBitShiftRegister
+Info (12021): Found 2 design units, including 1 entities, in source file recepteurcontrol.vhd
+    Info (12022): Found design unit 1: RecepteurControl-basic
+    Info (12023): Found entity 1: RecepteurControl
+Info (12021): Found 2 design units, including 1 entities, in source file eightbitshiftregister2.vhd
+    Info (12022): Found design unit 1: eightBitShiftRegister2-rtl
+    Info (12023): Found entity 1: eightBitShiftRegister2
+Info (12021): Found 2 design units, including 1 entities, in source file clk_div41.vhd
+    Info (12022): Found design unit 1: clk_div41-a
+    Info (12023): Found entity 1: clk_div41
+Info (12021): Found 2 design units, including 1 entities, in source file clk_div256.vhd
+    Info (12022): Found design unit 1: clk_div256-rtl
+    Info (12023): Found entity 1: clk_div256
+Info (12021): Found 2 design units, including 1 entities, in source file eighttoonemux.vhd
+    Info (12022): Found design unit 1: eightToOneMux-basic
+    Info (12023): Found entity 1: eightToOneMux
+Info (12021): Found 2 design units, including 1 entities, in source file clk_div8.vhd
+    Info (12022): Found design unit 1: clk_div8-a
+    Info (12023): Found entity 1: clk_div8
+Info (12021): Found 2 design units, including 1 entities, in source file controleur_emetteur.vhd
+    Info (12022): Found design unit 1: EmetteurControl-basic
+    Info (12023): Found entity 1: EmetteurControl
+Info (12021): Found 2 design units, including 1 entities, in source file eightbitshiftregister_emetteur.vhd
+    Info (12022): Found design unit 1: eightBitShiftRegister_emetteur-rtl
+    Info (12023): Found entity 1: eightBitShiftRegister_emetteur
+Info (12021): Found 2 design units, including 1 entities, in source file clk_div2.vhd
+    Info (12022): Found design unit 1: clk_div2-rtl
+    Info (12023): Found entity 1: clk_div2
+Info (12021): Found 2 design units, including 1 entities, in source file endardff_2r1.vhd
+    Info (12022): Found design unit 1: enARdFF_2R1-rtl
+    Info (12023): Found entity 1: enARdFF_2R1
+Info (12127): Elaborating entity "ControleurUART" for the top level hierarchy
+Info (12128): Elaborating entity "lab3" for hierarchy "lab3:LAB3ENT"
+Info (12128): Elaborating entity "clk_div" for hierarchy "lab3:LAB3ENT|clk_div:divHorloge"
+Info (12128): Elaborating entity "controleur" for hierarchy "lab3:LAB3ENT|controleur:CONT"
+Info (12128): Elaborating entity "counter" for hierarchy "lab3:LAB3ENT|counter:MS"
+Info (12128): Elaborating entity "fourBitAdder" for hierarchy "lab3:LAB3ENT|counter:MS|fourBitAdder:fa"
+Info (12128): Elaborating entity "oneBitAdder" for hierarchy "lab3:LAB3ENT|counter:MS|fourBitAdder:fa|oneBitAdder:add3"
+Info (12128): Elaborating entity "fourBitRegister" for hierarchy "lab3:LAB3ENT|counter:MS|fourBitRegister:reg"
+Warning (10036): Verilog HDL or VHDL warning at fourbitregister.vhd(40): object "int_notValue" assigned a value but never read
+Info (12128): Elaborating entity "enARdFF_2" for hierarchy "lab3:LAB3ENT|counter:MS|fourBitRegister:reg|enARdFF_2:msb"
+Info (12128): Elaborating entity "debouncer_2" for hierarchy "lab3:LAB3ENT|debouncer_2:rebondisseur"
+Warning (10036): Verilog HDL or VHDL warning at debouncer_2.vhd(38): object "int_q1Output" assigned a value but never read
+Info (12128): Elaborating entity "fourBitComparator" for hierarchy "lab3:LAB3ENT|fourBitComparator:comparateur"
+Info (12128): Elaborating entity "oneBitComparator" for hierarchy "lab3:LAB3ENT|fourBitComparator:comparateur|oneBitComparator:comp3"
+Info (12128): Elaborating entity "segment7disp" for hierarchy "lab3:LAB3ENT|segment7disp:seg"
+Info (12128): Elaborating entity "UART" for hierarchy "UART:UART1"
+Info (12128): Elaborating entity "Emetteur" for hierarchy "UART:UART1|Emetteur:emetteur1"
+Info (12128): Elaborating entity "eightBitRegister" for hierarchy "UART:UART1|Emetteur:emetteur1|eightBitRegister:RTD"
+Warning (10036): Verilog HDL or VHDL warning at eightBitRegister.vhd(40): object "int_notValue" assigned a value but never read
+Info (12128): Elaborating entity "eightBitShiftRegister_emetteur" for hierarchy "UART:UART1|Emetteur:emetteur1|eightBitShiftRegister_emetteur:RDTD"
+Warning (10036): Verilog HDL or VHDL warning at eightBitShiftRegister_emetteur.vhd(43): object "int_notValue" assigned a value but never read
+Info (12128): Elaborating entity "enARdFF_2R1" for hierarchy "UART:UART1|Emetteur:emetteur1|eightBitShiftRegister_emetteur:RDTD|enARdFF_2R1:bit7"
+Info (12128): Elaborating entity "EmetteurControl" for hierarchy "UART:UART1|Emetteur:emetteur1|EmetteurControl:control_emetteur"
+Info (12128): Elaborating entity "Recepteur" for hierarchy "UART:UART1|Recepteur:recepteur1"
+Info (12128): Elaborating entity "eightBitShiftRegister" for hierarchy "UART:UART1|Recepteur:recepteur1|eightBitShiftRegister:RDRD"
+Warning (10036): Verilog HDL or VHDL warning at eightBitShiftRegister.vhd(40): object "int_notValue" assigned a value but never read
+Info (12128): Elaborating entity "RecepteurControl" for hierarchy "UART:UART1|Recepteur:recepteur1|RecepteurControl:ControleurRecepteur"
+Info (12128): Elaborating entity "VitesseDeBaud" for hierarchy "UART:UART1|VitesseDeBaud:vitesseDeBaud1"
+Info (12128): Elaborating entity "clk_div41" for hierarchy "UART:UART1|VitesseDeBaud:vitesseDeBaud1|clk_div41:div41"
+Info (12128): Elaborating entity "clk_div256" for hierarchy "UART:UART1|VitesseDeBaud:vitesseDeBaud1|clk_div256:div256"
+Info (12128): Elaborating entity "clk_div2" for hierarchy "UART:UART1|VitesseDeBaud:vitesseDeBaud1|clk_div256:div256|clk_div2:div2"
+Info (12128): Elaborating entity "eightToOneMux" for hierarchy "UART:UART1|VitesseDeBaud:vitesseDeBaud1|eightToOneMux:mux"
+Warning (19016): Clock multiplexers are found and protected
+    Warning (19017): Found clock multiplexer UART:UART1|VitesseDeBaud:vitesseDeBaud1|eightToOneMux:mux|o
+    Warning (19017): Found clock multiplexer UART:UART1|VitesseDeBaud:vitesseDeBaud1|eightToOneMux:mux|o~synth
+    Warning (19017): Found clock multiplexer UART:UART1|VitesseDeBaud:vitesseDeBaud1|eightToOneMux:mux|o~synth
+    Warning (19017): Found clock multiplexer UART:UART1|VitesseDeBaud:vitesseDeBaud1|eightToOneMux:mux|o~synth
+    Warning (19017): Found clock multiplexer UART:UART1|VitesseDeBaud:vitesseDeBaud1|eightToOneMux:mux|o~synth
+    Warning (19017): Found clock multiplexer UART:UART1|VitesseDeBaud:vitesseDeBaud1|eightToOneMux:mux|o~synth
+    Warning (19017): Found clock multiplexer UART:UART1|VitesseDeBaud:vitesseDeBaud1|eightToOneMux:mux|o~synth
+Warning (12241): 5 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Info (13000): Registers with preset signals will power-up high
+Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "BCD2[1]" is stuck at GND
+    Warning (13410): Pin "BCD2[2]" is stuck at GND
+    Warning (13410): Pin "BCD2[6]" is stuck at VCC
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 208 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 14 input pins
+    Info (21059): Implemented 28 output pins
+    Info (21061): Implemented 166 logic cells
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 18 warnings
+    Info: Peak virtual memory: 545 megabytes
+    Info: Processing ended: Fri Dec 04 23:15:49 2015
+    Info: Elapsed time: 00:00:05
+    Info: Total CPU time (on all processors): 00:00:05
+
+

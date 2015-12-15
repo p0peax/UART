@@ -1,0 +1,30 @@
+library IEEE;
+use  IEEE.STD_LOGIC_1164.all;
+use  IEEE.STD_LOGIC_ARITH.all;
+use  IEEE.STD_LOGIC_UNSIGNED.all;
+
+ENTITY clk_div256 IS
+
+	PORT
+	(
+		clock_614KHz			: IN	STD_LOGIC;
+		o_clock 					: OUT	STD_LOGIC_VECTOR(7 downto 0);
+	
+END clk_div256;
+
+ARCHITECTURE a OF clk_div256 IS
+
+	SIGNAL  	int_clock_307KHz,	int_clock_154KHz,	int_clock_77KHz,	int_clock_38KHz,	int_clock_19KHz, int_clock_9KHz, int_clock_5KHz, int_clock_2KHz: STD_LOGIC;
+	SIGNAL	count_307Khz, count_154Khz, count_77Khz, count_38Khz, count_19Khz, count_9Khz, count_5Khz, count_2Khz : STD_LOGIC_VECTOR(2 DOWNTO 0);
+	
+BEGIN
+	PROCESS 
+	BEGIN
+	WAIT UNTIL clock_614KHz'EVENT and clock_614KHz = '1';
+			IF count_307Khz /= 2 THEN
+				count_307Khz <= count_307Khz + 1;
+			ELSE
+				count_307khz <= "000";
+				int_clock_307KHz <= NOT int_clock_307KHz;
+			END IF;
+	END PROCESS;
