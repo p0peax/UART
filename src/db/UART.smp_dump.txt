@@ -1,0 +1,24 @@
+
+State Machine - |ControleurUART|UART:UART1|Recepteur:recepteur1|RecepteurControl:ControleurRecepteur|presentState
+Name presentState.SAVE presentState.PAUSE presentState.DATA presentState.START presentState.IDLE 
+presentState.IDLE 0 0 0 0 0 
+presentState.START 0 0 0 1 1 
+presentState.DATA 0 0 1 0 1 
+presentState.PAUSE 0 1 0 0 1 
+presentState.SAVE 1 0 0 0 1 
+
+State Machine - |ControleurUART|UART:UART1|Emetteur:emetteur1|EmetteurControl:control_emetteur|presentState
+Name presentState.STOP presentState.DATA presentState.START presentState.READY presentState.DETECTED presentState.IDLE 
+presentState.IDLE 0 0 0 0 0 0 
+presentState.DETECTED 0 0 0 0 1 1 
+presentState.READY 0 0 0 1 0 1 
+presentState.START 0 0 1 0 0 1 
+presentState.DATA 0 1 0 0 0 1 
+presentState.STOP 1 0 0 0 0 1 
+
+State Machine - |ControleurUART|lab3:LAB3ENT|controleur:CONT|presentState
+Name presentState.D presentState.C presentState.B presentState.A 
+presentState.A 0 0 0 0 
+presentState.B 0 0 1 1 
+presentState.C 0 1 0 1 
+presentState.D 1 0 0 1 
